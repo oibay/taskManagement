@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace Src\Users\Infrastructure\Repository;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Src\Users\Domain\Entity\Email;
 use Src\Users\Domain\Entity\HashedPassword;
 use Src\Users\Domain\Entity\User;
 use Src\Users\Domain\Repository\UserCreateRepository;
+use Src\Users\Domain\Repository\UserSignInRepository;
 use Src\Users\Infrastructure\Orm\User as EloquentUser;
 
-class EloquentUserRepository implements UserCreateRepository
+class EloquentUserRepository implements UserCreateRepository, UserSignInRepository
 {
 
     public function store(User $user, HashedPassword $password): void
@@ -30,5 +32,13 @@ class EloquentUserRepository implements UserCreateRepository
     public function isEmailAlreadyExist(Email $email): bool
     {
         return EloquentUser::whereEmail($email)->exists();
+    }
+
+    public function signIn(string $email, string $password): void
+    {
+       if (!Auth::attempt(['email' => $email, 'password' => $password])) {
+           throw new \InvalidArgumentException('E-mail или пароль неправильный');
+       }
+
     }
 }

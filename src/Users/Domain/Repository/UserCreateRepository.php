@@ -13,4 +13,5 @@ interface UserCreateRepository
     public function store(User $user, HashedPassword $password): void;
 
     public function isEmailAlreadyExist(Email $email): bool;
+
 }

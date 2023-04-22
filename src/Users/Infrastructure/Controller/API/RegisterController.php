@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Src\Shared\Application\CommandBus;
 use Src\Shared\Domain\ValueObject\UuidValueObject;
-use Src\Users\Application\Create\Command as CreateUserCommand;
+use Src\Users\Application\SignUp\Command as CreateUserCommand;
 use Src\Users\Application\DTO\UserCreateDTO;
 use Src\Users\Application\Exceptions\UserAlreadyExistException;
 use Src\Users\Infrastructure\Orm\User as EloquentUser;

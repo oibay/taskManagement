@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Src\Users\Application\Create;
+namespace Src\Users\Application\SignUp;
 use Src\Shared\Application\Command as CommandInterface;
 use Src\Users\Application\DTO\UserCreateDTO;
 
