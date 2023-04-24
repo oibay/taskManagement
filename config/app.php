@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use Src\Task\Infrastructure\Providers\TaskServiceProvider;
 use Src\Users\Infrastructure\Provider\UserServiceProvider;
 
 return [
@@ -171,6 +172,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         UserServiceProvider::class,
+        TaskServiceProvider::class,
     ])->toArray(),
 
     /*

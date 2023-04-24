@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Src\Task\Infrastructure\Controller\API\TaskCreateController;
 use Src\Users\Infrastructure\Controller\API\AuthController;
 use Src\Users\Infrastructure\Controller\API\RegisterController;
 
@@ -23,3 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('create-user', RegisterController::class);
 Route::post('sign-user', AuthController::class);
+
+Route::post('create-task', TaskCreateController::class)->middleware('auth:api');
